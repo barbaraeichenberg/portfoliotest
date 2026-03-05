@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const centerY = H * 0.44;
 
   // Tamanho do cubo
-  const cubeSize = 150;
+  const cubeSize = 260;
 
   // Ângulo: “de cima” igual seu mock
   let rotY = 0.22;      // yaw inicial
