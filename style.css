@@ -1,0 +1,112 @@
+:root {
+    --bg-color: #121417;
+    --card-color: #1a1f24;
+    --border-color: #2a3138;
+    --text-color: #e2e8f0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.bg-base { background-color: var(--bg-color); }
+.bg-card { background-color: var(--card-color); }
+.border-line { border-color: var(--border-color); }
+.text-light { color: var(--text-color); }
+.text-line { color: var(--border-color); }
+
+.dragging {
+    user-select: none !important;
+}
+
+canvas {
+    display: block;
+    outline: none;
+    user-select: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+/* =========================
+   LOADING OVERLAY (FULLSCREEN)
+   ========================= */
+#loadingOverlay{
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 999999 !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  background: #121417 !important;
+
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  opacity: 1;
+}
+
+#loadingOverlay.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 520ms ease;
+}
+
+#loadingCenter{
+  width: min(760px, 92vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+#loadingCubeCanvas{
+  width: min(420px, 84vw);
+  height: auto;
+  display: block;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 26px rgba(255,255,255,0.12));
+}
+
+#loadingBar{
+  width: min(520px, 78vw);
+  height: 2px;
+  background: rgba(255,255,255,0.18);
+  overflow: hidden;
+}
+
+#loadingBarFill{
+  height: 100%;
+  width: 0%;
+  background: rgba(255,255,255,0.85);
+  transition: width 120ms linear;
+  box-shadow: 0 0 18px rgba(255,255,255,0.18);
+}
+
+#loadingText{
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: .02em;
+  color: rgba(255,255,255,0.9);
+  opacity: 0.38;
+  text-align: center;
+}
+
+/* scanlines bem discretas */
+#loadingOverlay::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity: .035;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,.14) 1px, transparent 1px);
+  background-size: 100% 7px;
+}

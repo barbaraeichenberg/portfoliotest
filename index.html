@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bárbara Eichenberg | Portfólio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-base text-light antialiased selection:bg-gray-700 selection:text-white">
+    <!-- ✅ LOADING OVERLAY FULLSCREEN -->
+<div id="loadingOverlay" aria-live="polite" aria-label="Carregando portfólio">
+  <div id="loadingCenter">
+    <canvas id="loadingCubeCanvas" width="560" height="420" aria-hidden="true"></canvas>
+
+    <div id="loadingBar" aria-hidden="true">
+      <div id="loadingBarFill"></div>
+    </div>
+
+    <div id="loadingText">compilando wireframe...</div>
+  </div>
+</div>
+    <header class="fixed w-full top-0 z-50 bg-base/90 backdrop-blur-md border-b border-line transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-bold text-xl tracking-tight">Bárbara Eichenberg</a>
+            
+            <nav class="hidden md:flex gap-8 font-semibold text-sm tracking-wide">
+                <a href="#sobre" class="hover:text-white text-gray-400 transition-colors">Sobre Mim</a>
+                <a href="#trabalho" class="hover:text-white text-gray-400 transition-colors">Trabalho</a>
+                <a href="#contato" class="hover:text-white text-gray-400 transition-colors">Contato</a>
+            </nav>
+            
+            <button id="mobile-menu-btn" class="md:hidden text-light">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-card border-b border-line px-6 py-4 flex flex-col gap-4 font-semibold text-sm">
+            <a href="#sobre" class="mobile-link text-gray-400">sobre mim</a>
+            <a href="#trabalho" class="mobile-link text-gray-400">trabalho</a>
+            <a href="#contato" class="mobile-link text-gray-400">contato</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="min-h-screen pt-20 flex items-center relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                <div class="flex flex-col gap-4 animate-fade-in">
+                    <h1 class="font-bold text-5xl lg:text-7xl leading-tight">Bárbara<br>Eichenberg</h1>
+                    <p class="font-semibold text-lg lg:text-xl text-gray-400">Design Gráfico | Marketing Digital | Direção de Arte</p>
+                    <p class="text-sm text-gray-500 mt-2 opacity-70">Arraste para girar o cubo</p>
+                </div>
+                <div id="canvas-container" class="h-[400px] lg:h-[600px] w-full flex justify-center items-center cursor-grab active:cursor-grabbing relative">
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="py-24 bg-card/30">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div class="flex flex-col gap-8">
+                        <img src="images/pfp.png" alt="Bárbara" class="w-32 h-32 rounded-full object-cover border-2 border-line">
+                        <div>
+                            <h2 class="font-bold text-3xl mb-6">Sobre mim</h2>
+                            <div class="space-y-4 text-gray-300 leading-relaxed font-regular">
+                                <p>Meu nome é Bárbara, sou carioca e apaixonada por arte. Estudo e pratico Design há 5 anos, período em que desenvolvi projetos autorais e atuei como freelancer para algumas marcas relevantes no mercado.</p>
+                                <p>Hoje tenho 3 anos de experiência profissional e curso Design Gráfico, com interesse em cursar Fotografia e Marketing.</p>
+                                <p>Trabalho com Design, Comunicação, Direção de Arte e Marketing, principalmente no ramo da moda. Além disso, também desenvolvo projetos ligados ao universo dos jogos, outra área que faz parte do meu repertório criativo.</p>
+                                <p>Estou sempre buscando evoluir e conhecer cada vez mais as diferentes ramificações do Marketing Digital.</p>
+                            </div>
+                        </div>
+                        <a href="Currículo Bárbara Eichenberg.pdf" download class="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-semibold w-max hover:scale-105 transition-transform duration-300">
+                            Baixar currículo <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-col gap-12">
+                        <div>
+                            <h3 class="font-semibold text-xl mb-6 text-gray-200">Softwares</h3>
+                            <div class="space-y-6">
+                                <div class="skill-item">
+                                    <div class="flex justify-between text-sm mb-2"><span>Photoshop</span></div>
+                                    <div class="h-1.5 w-full bg-line rounded-full overflow-hidden">
+                                        <div class="h-full bg-white progress-bar w-0 transition-all duration-1000 ease-out" data-target="95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="flex justify-between text-sm mb-2"><span>Illustrator</span></div>
+                                    <div class="h-1.5 w-full bg-line rounded-full overflow-hidden">
+                                        <div class="h-full bg-white progress-bar w-0 transition-all duration-1000 ease-out delay-100" data-target="90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="flex justify-between text-sm mb-2"><span>Figma</span></div>
+                                    <div class="h-1.5 w-full bg-line rounded-full overflow-hidden">
+                                        <div class="h-full bg-white progress-bar w-0 transition-all duration-1000 ease-out delay-200" data-target="85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-xl mb-6 text-gray-200">Skills</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-card border border-line rounded-full text-sm">Gestão de Tempo</span>
+                                <span class="px-4 py-2 bg-card border border-line rounded-full text-sm">Liderança</span>
+                                <span class="px-4 py-2 bg-card border border-line rounded-full text-sm">Detalhista</span>
+                                <span class="px-4 py-2 bg-card border border-line rounded-full text-sm">Criatividade</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-xl mb-6 text-gray-200">Idiomas</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4">
+                                    <span class="w-20 text-sm">Inglês</span>
+                                    <div class="flex gap-1 text-xs">
+                                        <span>●</span><span>●</span><span>●</span><span>●</span><span class="text-line">○</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <span class="w-20 text-sm">Japonês</span>
+                                    <div class="flex gap-1 text-xs">
+                                        <span>●</span><span>●</span><span class="text-line">○</span><span class="text-line">○</span><span class="text-line">○</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trabalho" class="py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="font-bold text-3xl mb-12">Trabalho</h2>
+                
+                <h3 class="font-semibold text-xl mb-6 text-gray-400">Moda</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                    <a href="https://www.behance.net/gallery/244026311/SHOOTING-CARNAVAL-2026" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/carna26.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="SHOOTING CARNAVAL 2026">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">SHOOTING CARNAVAL 2026</h4>
+                            <p class="text-sm text-gray-500 mt-1">Moda</p>
+                        </div>
+                    </a>
+                    <a href="https://www.behance.net/gallery/244026151/SHOOTING-CARNAVAL-2025" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/carna25.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="SHOOTING CARNAVAL 2025">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">SHOOTING CARNAVAL 2025</h4>
+                            <p class="text-sm text-gray-500 mt-1">Moda</p>
+                        </div>
+                    </a>
+                    <a href="https://www.behance.net/gallery/243983453/SHOOTING-DONA-BETTA-20" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/shooting2.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="SHOOTING DONA BETTA 2.0">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">SHOOTING DONA BETTA 2.0</h4>
+                            <p class="text-sm text-gray-500 mt-1">Moda</p>
+                        </div>
+                    </a>
+                    <a href="https://www.behance.net/gallery/243979429/SHOOTING-DONA-BETTA" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/shooting1.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="SHOOTING DONA BETTA">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">SHOOTING DONA BETTA</h4>
+                            <p class="text-sm text-gray-500 mt-1">Moda</p>
+                        </div>
+                    </a>
+                    <a href="https://www.behance.net/gallery/241492799/Fashion-Still-Ghost-Manequim" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/still.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Fashion Still | Ghost Manequim">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Fashion Still | Ghost Manequim</h4>
+                            <p class="text-sm text-gray-500 mt-1">Moda</p>
+                        </div>
+                    </a>
+                </div>
+
+                <h3 class="font-semibold text-xl mb-6 text-gray-400">Games</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="https://www.behance.net/gallery/241681755/Valorant-Thumbnails" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/thumbs1.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Valorant Thumbnails">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Valorant Thumbnails</h4>
+                            <p class="text-sm text-gray-500 mt-1">Games</p>
+                        </div>
+                    </a>
+                    <a href="https://www.behance.net/gallery/192677081/Valorant-ProPlayers" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/vavapro.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Valorant ProPlayers">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Valorant ProPlayers</h4>
+                            <p class="text-sm text-gray-500 mt-1">Games</p>
+                        </div>
+                    </a>
+                    <a href="https://www.behance.net/gallery/237022257/Anime-Valorant-LoL-Header-Showcase" target="_blank" class="group block overflow-hidden rounded-xl bg-card border border-line hover:border-gray-500 transition-colors">
+                        <div class="aspect-video overflow-hidden">
+                            <img src="images/headers.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Anime, Valorant & LoL Header Showcase">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Anime, Valorant & LoL Header Showcase</h4>
+                            <p class="text-sm text-gray-500 mt-1">Games</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-24 bg-card/30 border-t border-line">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="font-bold text-3xl mb-12">Contato</h2>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <a href="mailto:barbaraeichenberg18@gmail.com" class="flex items-center gap-3 px-8 py-4 bg-card border border-line rounded-full hover:bg-line hover:text-white transition-all duration-300">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        <span class="font-semibold">barbaraeichenberg18@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/barbara-eichenberg/" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-card border border-line rounded-full hover:bg-line hover:text-white transition-all duration-300">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        <span class="font-semibold">LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 text-center text-sm text-gray-500 border-t border-line">
+        <p>&copy; 2026 Bárbara Eichenberg. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module" src="scene.js"></script>
+    <script type="module" src="main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
