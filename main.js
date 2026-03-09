@@ -172,3 +172,37 @@ popup.innerHTML = `
 document.body.appendChild(popup)
 
 },60000)
+window.addEventListener("load", () => {
+  const popup = document.getElementById("portfolioGamePopup");
+  const playBtn = document.getElementById("portfolioGamePlayBtn");
+  const closeBtn = document.getElementById("portfolioGameCloseBtn");
+
+  if (!popup || !playBtn || !closeBtn) return;
+
+  const alreadyClosed = sessionStorage.getItem("portfolioGamePopupClosed");
+
+  if (!alreadyClosed) {
+    setTimeout(() => {
+      popup.classList.add("show");
+      popup.setAttribute("aria-hidden", "false");
+    }, 60000);
+  }
+
+  playBtn.addEventListener("click", () => {
+    window.location.href = "game.html";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.remove("show");
+    popup.setAttribute("aria-hidden", "true");
+    sessionStorage.setItem("portfolioGamePopupClosed", "true");
+  });
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.classList.remove("show");
+      popup.setAttribute("aria-hidden", "true");
+      sessionStorage.setItem("portfolioGamePopupClosed", "true");
+    }
+  });
+});
