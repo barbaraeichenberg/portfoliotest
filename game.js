@@ -182,12 +182,12 @@ function drawBackground() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  gradient.addColorStop(0, "#080c12");
-  gradient.addColorStop(1, "#070b11");
+  gradient.addColorStop(0, "#111319");
+  gradient.addColorStop(1, "#0d0f14");
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.strokeStyle = "rgba(255,255,255,0.06)";
+  ctx.strokeStyle = "rgba(255,255,255,0.045)";
   ctx.lineWidth = 1;
 
   ctx.beginPath();
@@ -203,7 +203,7 @@ function drawBackground() {
   ctx.beginPath();
   ctx.moveTo(0, GROUND_Y + 0.5);
   ctx.lineTo(canvas.width, GROUND_Y + 0.5);
-  ctx.strokeStyle = "rgba(255,255,255,0.7)";
+  ctx.strokeStyle = "rgba(255,255,255,0.62)";
   ctx.stroke();
 }
 
