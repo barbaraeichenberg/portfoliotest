@@ -224,15 +224,13 @@ function drawObstacle(obstacle) {
   ctx.translate(cx, cy);
   ctx.rotate(Math.PI / 4);
 
+  // camada externa escura/transparente
   ctx.fillStyle = "rgba(255,255,255,0.10)";
   ctx.fillRect(-obstacle.size / 2, -obstacle.size / 2, obstacle.size, obstacle.size);
 
-  const middle = obstacle.size * 0.56;
-  ctx.fillStyle = "rgba(255,255,255,0.16)";
-  ctx.fillRect(-middle / 2, -middle / 2, middle, middle);
-
-  const inner = obstacle.size * 0.24;
-  ctx.fillStyle = "#f6f7fb";
+  // camada interna branca
+  const inner = obstacle.size * 0.34;
+  ctx.fillStyle = "#f5f7fb";
   ctx.fillRect(-inner / 2, -inner / 2, inner, inner);
 
   ctx.restore();
