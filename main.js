@@ -158,3 +158,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, waitMore);
   });
 })();
+setTimeout(()=>{
+
+const popup = document.createElement("div")
+
+popup.innerHTML = `
+<div id="gamePopup">
+<h2>Já explorou meu trabalho — agora bora relaxar um pouco?</h2>
+<button onclick="window.location.href='game.html'">Jogar</button>
+</div>
+`
+
+document.body.appendChild(popup)
+
+},60000)
