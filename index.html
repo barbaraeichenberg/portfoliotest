@@ -239,9 +239,22 @@
         </section>
     </main>
 
-    <footer class="py-8 text-center text-sm text-gray-500 border-t border-line">
+      <footer class="py-8 text-center text-sm text-gray-500 border-t border-line">
         <p>&copy; 2026 Bárbara Eichenberg. Todos os direitos reservados.</p>
     </footer>
+
+    <div id="portfolioGamePopup" class="site-popup-overlay" aria-hidden="true">
+      <div class="site-popup-card">
+        <div class="site-popup-kicker">Pausa criativa</div>
+        <h2>Já explorou meu trabalho — agora bora relaxar um pouco?</h2>
+        <p>Preparei um mini game rápido para você jogar sem sair do clima do portfolio.</p>
+
+        <div class="site-popup-actions">
+          <button id="portfolioGamePlayBtn" class="site-popup-btn site-popup-btn-primary">Jogar</button>
+          <button id="portfolioGameCloseBtn" class="site-popup-btn site-popup-btn-secondary">Continuar no site</button>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script type="module" src="scene.js"></script>
