@@ -206,3 +206,90 @@ window.addEventListener("load", () => {
     }
   });
 });
+/* =========================
+   MINI GAME POPUP
+========================= */
+
+window.addEventListener("load", () => {
+
+  const popup = document.getElementById("portfolioGamePopup");
+  const playBtn = document.getElementById("portfolioGamePlayBtn");
+  const closeBtn = document.getElementById("portfolioGameCloseBtn");
+
+  if (!popup) return;
+
+  const popupClosed = sessionStorage.getItem("portfolioGamePopupClosed");
+
+  if (!popupClosed) {
+    setTimeout(() => {
+      popup.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }, 60000);
+  }
+
+  function closePopup() {
+    popup.classList.remove("show");
+    document.body.style.overflow = "";
+    sessionStorage.setItem("portfolioGamePopupClosed", "true");
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener("click", () => {
+      window.location.href = "game.html";
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closePopup);
+  }
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      closePopup();
+    }
+  });
+
+});/* =========================
+   MINI GAME POPUP
+========================= */
+
+window.addEventListener("load", () => {
+
+  const popup = document.getElementById("portfolioGamePopup");
+  const playBtn = document.getElementById("portfolioGamePlayBtn");
+  const closeBtn = document.getElementById("portfolioGameCloseBtn");
+
+  if (!popup) return;
+
+  const popupClosed = sessionStorage.getItem("portfolioGamePopupClosed");
+
+  if (!popupClosed) {
+    setTimeout(() => {
+      popup.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }, 60000);
+  }
+
+  function closePopup() {
+    popup.classList.remove("show");
+    document.body.style.overflow = "";
+    sessionStorage.setItem("portfolioGamePopupClosed", "true");
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener("click", () => {
+      window.location.href = "game.html";
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closePopup);
+  }
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      closePopup();
+    }
+  });
+
+});
