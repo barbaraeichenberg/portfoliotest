@@ -1,42 +1,306 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Mini Game</title>
-<link rel="stylesheet" href="style.css">
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-body{
-background:#0b0f14;
-color:white;
-font-family:Montserrat;
-overflow:hidden;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-canvas{
-display:block;
-margin:auto;
-margin-top:100px;
-background:#0b0f14;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #070b11;
+      color: #f5f7fb;
+      font-family: "Montserrat", sans-serif;
+      overflow: hidden;
+    }
 
-#score{
-position:absolute;
-top:30px;
-right:40px;
-font-size:20px;
-}
+    body {
+      position: relative;
+    }
 
-</style>
+    .game-shell {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 35%),
+        linear-gradient(180deg, #080c12 0%, #070b11 100%);
+    }
+
+    .game-wrap {
+      width: min(1100px, 100%);
+    }
+
+    .game-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .game-title {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .game-title small {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: rgba(255,255,255,0.42);
+    }
+
+    .game-title h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .score-box {
+      min-width: 180px;
+      padding: 18px 22px;
+      border-radius: 22px;
+      background: rgba(17, 23, 33, 0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      text-align: right;
+      backdrop-filter: blur(12px);
+    }
+
+    .score-box span {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+      color: #ffffff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .canvas-card {
+      position: relative;
+      width: 100%;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(12,18,27,0.98) 0%, rgba(8,12,18,1) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.38);
+      overflow: hidden;
+    }
+
+    #gameCanvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: transparent;
+    }
+
+    .hint-bar {
+      position: absolute;
+      left: 22px;
+      bottom: 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.42);
+      pointer-events: none;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(3, 6, 10, 0.68);
+      backdrop-filter: blur(6px);
+    }
+
+    .overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      width: min(520px, 100%);
+      padding: 30px 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(18,24,35,0.98) 0%, rgba(13,18,27,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.42);
+      text-align: left;
+    }
+
+    .modal-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: rgba(255,255,255,0.42);
+      margin-bottom: 12px;
+    }
+
+    .modal h2 {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.15;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .modal p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.70);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 18px;
+      padding: 14px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #081019;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #eef2f7;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .result-number {
+      margin-top: 18px;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 800;
+      color: #ffffff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .result-label {
+      margin-top: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.52);
+    }
+
+    @media (max-width: 720px) {
+      .game-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .score-box {
+        width: 100%;
+        text-align: left;
+      }
+
+      .hint-bar {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="game-shell">
+    <div class="game-wrap">
+      <div class="game-topbar">
+        <div class="game-title">
+          <small>Mini game</small>
+          <h1>Runner geométrico</h1>
+        </div>
 
-<div id="score">0</div>
+        <div class="score-box">
+          <span>Obstáculos pulados</span>
+          <strong id="scoreValue">0</strong>
+        </div>
+      </div>
 
-<canvas id="gameCanvas" width="900" height="300"></canvas>
+      <div class="canvas-card">
+        <canvas id="gameCanvas" width="1100" height="420"></canvas>
+        <div class="hint-bar">Espaço, clique ou toque para pular. Segurar = salto mais alto.</div>
+      </div>
+    </div>
+  </div>
 
-<script src="game.js"></script>
+  <div id="startOverlay" class="overlay show">
+    <div class="modal">
+      <div class="modal-kicker">Mini game</div>
+      <h2>Pronta para uma pausa rápida?</h2>
+      <p>
+        Pule os obstáculos e veja quantos você consegue passar sem bater.
+      </p>
 
+      <div class="modal-actions">
+        <button id="startGameBtn" class="btn btn-primary">Jogar</button>
+        <button class="btn btn-secondary" onclick="window.location.href='index.html'">Voltar ao site</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameOverOverlay" class="overlay">
+    <div class="modal">
+      <div class="modal-kicker">Fim de jogo</div>
+      <h2>Você foi longe.</h2>
+      <p>Seu resultado foi:</p>
+
+      <div id="finalScore" class="result-number">0</div>
+      <div class="result-label">obstáculos pulados</div>
+
+      <div class="modal-actions">
+        <button id="restartGameBtn" class="btn btn-primary">Jogar de novo</button>
+        <button class="btn btn-secondary" onclick="window.location.href='index.html'">Voltar ao site</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
 </body>
 </html>
