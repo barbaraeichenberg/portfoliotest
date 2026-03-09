@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Mini Game</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+body{
+background:#0b0f14;
+color:white;
+font-family:Montserrat;
+overflow:hidden;
+}
+
+canvas{
+display:block;
+margin:auto;
+margin-top:100px;
+background:#0b0f14;
+}
+
+#score{
+position:absolute;
+top:30px;
+right:40px;
+font-size:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="score">0</div>
+
+<canvas id="gameCanvas" width="900" height="300"></canvas>
+
+<script src="game.js"></script>
+
+</body>
+</html>
